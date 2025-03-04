@@ -1,0 +1,34 @@
+{
+  "name": "plantbot-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/LarsVerschoor/plantbot-backend#readme",
+  "bugs": {
+    "url": "https://github.com/LarsVerschoor/plantbot-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarsVerschoor/plantbot-backend.git"
+  },
+  "license": "MIT",
+  "author": "Lars Verschoor",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "sequelize": "^6.37.6"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}
