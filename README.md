@@ -31,6 +31,18 @@ DIALECT_DEVELOPMENT=mysql
 npm run migrate:up
 ```
 
+## How to run:
+
+Run with --watch for development
+```bash
+npm run dev
+```
+
+Run for production
+```bash
+npm run start
+```
+
 ## Database commands:
 
 Migrate up
