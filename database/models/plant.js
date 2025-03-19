@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.Plant.belongsTo(models.Branch, {
-        foreignKey: 'branch_id'
+        foreignKey: 'branch_id',
+        allowNull: true
       });
     }
   }
