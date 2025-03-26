@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const { User } = require('../../database/models');
 
-const publicKey = fs.readFileSync(path.join(__dirname , '../../keys/public.key'));
+const publicKey = fs.readFileSync(path.join(__dirname, '../../keys/public.key'));
 
 const authenticate = async (req, res, next) => {
     // Authorization header validation
@@ -24,7 +24,7 @@ const authenticate = async (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
-        return res.status(500).json({message: 'Internal Server Error'});
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
 }
 
