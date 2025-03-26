@@ -1,3 +1,5 @@
+const hash = require('../../utils/hash');
+
 'use strict';
 const {
   Model
@@ -17,7 +19,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init({
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    email_verified: DataTypes.TINYINT,
+    email_verification_code: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
@@ -25,7 +29,27 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     timestamps: true,
     createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
+    defaultScope: {
+      attributes: { exclude: ['password', 'email_verification_code'] }
+    },
+    scopes: {
+      withPassword: {
+        attributes: {
+          include: ['password']
+        }
+      },
+      withEmailVerificationCode: {
+        attributes: {
+          include: ['email_verification_code']
+        }
+      },
+      withAllSensitiveData: {
+        attributes: {
+          include: ['password, email_verification_code']
+        }
+      }
+    }
   });
   return User;
 };

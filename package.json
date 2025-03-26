@@ -19,14 +19,18 @@
     "dev": "node --watch index.js",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate"
+    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+    "keys:generate": "node scripts/generate-jwt-keys.js"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0",
-    "sequelize": "^6.37.6"
+    "nodemailer": "^6.10.0",
+    "sequelize": "^6.37.6",
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.2"
