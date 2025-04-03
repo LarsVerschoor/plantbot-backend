@@ -13,7 +13,7 @@ const login = async (req, res) => {
     const password = passwordRaw.trim();
 
     try {
-        const user = await User.scope('withPassword').findOne({ where: { email } });
+        const user = await User.scope('withPassword').findOne({ where: { email, email_verified: 1 } });
         if (!user) {
             // perform dummy hash to prevent timing-attacks
             await bcrypt.compare('dummy', '$10$GZFjgafhmGppC3Xedepii.eVffZ1z7XDaxtNwgxc9v9dWxO2Vd8eq');
