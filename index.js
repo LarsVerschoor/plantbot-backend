@@ -3,8 +3,6 @@ const http = require('http');
 const WebSocket = require('ws');
 const cors = require('cors');
 
-app.use(cors());
-
 const { User, Plantbot } = require('./database/models');
 
 // Routers
@@ -27,6 +25,8 @@ wss.on('connection', (socket) => {
         console.log('Client disconnected');
     })
 });
+
+app.use(cors());
 
 app.use(express.json());
 
