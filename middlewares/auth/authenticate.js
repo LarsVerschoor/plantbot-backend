@@ -23,8 +23,11 @@ const authenticate = async (req, res, next) => {
         if (!req.user) return res.status(401).json({ error: 'User not found' });
         next();
     } catch (error) {
+        if (error.message === 'invalid signature') {
+            return res.status(400).json({error: 'Invalid Token'})
+        }
         console.error(error);
-        return res.status(500).json({ message: 'Internal Server Error' });
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
 }
 
