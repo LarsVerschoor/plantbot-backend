@@ -15,6 +15,6 @@ router.post('/register', registerController);
 router.post('/verify', verifyController);
 router.post('/login', loginController);
 
-router.get('/get-connect-uuid', authenticate, getConnectUUID);
+router.get('/connect-uuid', authenticate, getConnectUUID);
 
 module.exports = router;
