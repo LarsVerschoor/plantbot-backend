@@ -3,3 +3,5 @@
 keys/
 node_modules/
 .env
+data/
+vector-databases/

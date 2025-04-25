@@ -24,7 +24,9 @@ const authenticate = async (req, res, next) => {
         next();
     } catch (error) {
         if (error.message === 'invalid signature') {
-            return res.status(400).json({error: 'Invalid Token'})
+            return res.status(400).json({error: 'Invalid Token'});
+        } else if (error.name === 'TokenExpiredError') {
+            return res.status(401).json({error: 'Token expired'});
         }
         console.error(error);
         return res.status(500).json({ error: 'Internal Server Error' });
