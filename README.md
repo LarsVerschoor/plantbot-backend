@@ -20,8 +20,7 @@ cd plantbot-backend
 npm install
 ```
 
-4. Create a new .env. file in the same format of the existing .env.example file and fill it in with the correct
-   credentials.
+4. Rename .env.example to .env and enter your credentials.
 
 ```text
 USERNAME_DEVELOPMENT=<your_database_username>
@@ -35,6 +34,18 @@ DIALECT_DEVELOPMENT=mysql
 
 ```bash
 npm run migrate:up
+```
+
+6. Generate Key pairs to use with JWT authentication
+```bash
+npm run keys:generate
+```
+
+7. Add context data for the chatbot to use when generating responses by creating the /data/plant-needs.txt file. Add relevant data to this file.
+
+8. Split context data and insert into a vector database to do similarity searches on the data.
+```bash
+npm run create-data-embeddings
 ```
 
 ## How to run:

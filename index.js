@@ -33,6 +33,7 @@ wss.on('connection', (socket) => {
 
 app.use(cors({
     origin: function(origin, callback) {
+        console.log(origin);
         if (!origin) return callback(null, true);
         if (allowedOrigins.includes(origin)) return callback(null, true);
         return callback(new Error('Not allowed by CORS'));
