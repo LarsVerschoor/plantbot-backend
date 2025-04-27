@@ -17,7 +17,6 @@ const chat = async (req, res) => {
     const vectorStore = await FaissStore.load("vector-databases/plant-needs", embeddings);
     const relevantDocuments = await vectorStore.similaritySearch(question, 1);
     const context = relevantDocuments.map(doc => doc.pageContent).join('\n\n');
-    console.log(context)
     const newHistory = [
         ...chatHistory.slice(0, -1),
         ['system', `You are an AI plant expert. Answer the user's question. The user has a plantbot which waters their plants. It has watering modes 1 to 7 where 1 is very dry and 7 is very moist. If the user wants to know how much water their plant needs, you can respond with a plantbot watering mode. the following data are examples of watering modes: {
@@ -39,8 +38,6 @@ const chat = async (req, res) => {
         } Stay on the same subject by using previous messages and responses from the user. You can use the following context to answer the user's questions. Context: "${context}"`],
         ['user', question]
     ];
-
-    console.log(newHistory)
 
     const stream = await model.stream(newHistory);
 
